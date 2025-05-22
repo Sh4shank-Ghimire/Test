@@ -302,7 +302,7 @@
             document.querySelectorAll('tr').forEach((row, index) => {
                 row.style.opacity = 0;
                 row.style.transform = 'translateY(20px)';
-                row.style.transition = `all 0.5s ease ${index * 0.05}s`;
+                row.style.transition = `all 0.01s ease ${index * 0.01}s`;
                 observer.observe(row);
             });
         });
