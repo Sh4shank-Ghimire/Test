@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neem Tree Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #8bc34a;
+            --light-bg: #f0f4f8;
+            --dark-text: #263238;
+            --light-text: #f5f5f5;
+            --section-highlight: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1b5e20);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?q=80&w=1000&auto=format&fit=crop') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: all 0.5s ease;
+            filter: brightness(0.9);
+        }
+
+        .hero-image:hover {
+            filter: brightness(1);
+            transform: scale(1.02);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        th {
+            background: linear-gradient(to right, var(--secondary-color), #66bb6a);
+            color: var(--light-text);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) td {
+            background-color: var(--section-highlight);
+        }
+
+        tr:hover td {
+            background-color: #c8e6c9;
+            transform: scale(1.01);
+        }
+
+        td:hover {
+            background-color: #a5d6a7 !important;
+        }
+
+        .section-title {
+            background: linear-gradient(to right, #e0f2f1, #b2dfdb);
+            padding: 14px 24px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #00695c;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover {
+            background: linear-gradient(to right, #b2dfdb, #80cbc4);
+            padding-left: 30px;
+        }
+
+        .section-title::before {
+            content: "🌿";
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary-color), #1b5e20);
+            color: var(--light-text);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #8bc34a, #4caf50, #2e7d32);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                border-radius: 12px;
+            }
+
+            th, td {
+                padding: 12px 16px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-image {
+                height: 250px;
+            }
+        }
+
+        /* Floating leaves decoration */
+        .leaf {
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Add some decorative leaves */
+        .leaf-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 30px;
+            animation-delay: 0s;
+        }
+
+        .leaf-2 {
+            top: 30%;
+            right: 5%;
+            font-size: 40px;
+            animation-delay: 2s;
+        }
+
+        .leaf-3 {
+            bottom: 20%;
+            left: 8%;
+            font-size: 25px;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative floating leaves -->
+    <div class="leaf leaf-1">🍃</div>
+    <div class="leaf leaf-2">🌱</div>
+    <div class="leaf leaf-3">🍂</div>
+
+    <header class="animate__animated animate__fadeIn">
+        <h1>Neem Tree (Azadirachta indica)</h1>
+    </header>
+
+    <div class="container pulse animate__animated animate__fadeInUp">
+        <img src="https://images.unsplash.com/photo-1648198724908-067347a1a72d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Neem Tree" 
+             class="hero-image">
+        <div class="section-title">Basic Information</div>
+        <table>
+            <tr><th>Attribute</th><th>Details</th></tr>
+            <tr><td>Common Name</td><td>Neem Tree</td></tr>
+            <tr><td>Local Name (Nepali)</td><td>निमको रुख (Nimko Rukh)</td></tr>
+            <tr><td>Botanical Name</td><td><i>Azadirachta indica</i></td></tr>
+            <tr><td>Family</td><td>Mahogany family (Meliaceae)</td></tr>
+            <tr><td>Origin</td><td>India, Bangladesh, Pakistan, Indian subcontinent</td></tr>
+        </table>
+
+        <div class="section-title">Benefits & Uses</div>
+        <table>
+            <tr><th>Attribute</th><th>Details</th></tr>
+            <tr><td>Medicinal Properties</td><td>Antibacterial, antiviral, antifungal, anti-inflammatory, and more</td></tr>
+            <tr><td>Traditional Uses</td><td>Used in Ayurveda for skin diseases, fever, dental care, and diabetes</td></tr>
+            <tr><td>Agricultural Uses</td><td>Natural pesticide (neem oil), soil enricher, and fertilizer</td></tr>
+            <tr><td>Cultural Significance</td><td>Purifies air, prevents soil erosion, natural pest repellent, Spiritual and medicinal, revered in Hindu culture</td></tr>
+            <tr><td>Modern Applications</td><td>Used in cosmetics, soaps, toothpaste, and pet care products</td></tr>
+        </table>
+
+        <div class="section-title">Characteristics</div>
+        <table>
+            <tr><th>Attribute</th><th>Details</th></tr>
+            <tr><td>Growth Rate</td><td>Fast-growing (can reach 15-20m in 3-5 years)</td></tr>
+            <tr><td>Lifespan</td><td>150-200 years</td></tr>
+            <tr><td>DBH (Diameter at Breast Height)</td><td>Up to 1.5m in mature trees</td></tr>
+            <tr><td>Height</td><td>15-20m (can reach up to 30m in ideal conditions)</td></tr>
+            <tr><td>Leaves</td><td>Pinnate, 20-40cm long with 20-31 leaflets</td></tr>
+            <tr><td>Flowers</td><td>Small, white, fragrant, arranged in drooping axillary panicles</td></tr>
+            <tr><td>Fruit</td><td>Olive-like drupe, yellow when ripe</td></tr>
+            <tr><td>Climate</td><td>Thrives in tropical and subtropical climates</td></tr>
+            <tr><td>GPS co-ordinate</td><td>To be collected in the field</td></tr>
+        </table>
+    </div>
+
+    <footer class="animate__animated animate__fadeIn">
+        <p>&copy; Nepal Forestry Department, 2025 | The Tree of Life</p>
+    </footer>
+
+    <script>
+        // Add animation to table rows when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {threshold: 0.1});
+
+            document.querySelectorAll('tr').forEach((row, index) => {
+                row.style.opacity = 0;
+                row.style.transform = 'translateY(20px)';
+                row.style.transition = `all 0.5s ease ${index * 0.05}s`;
+                observer.observe(row);
+            });
+        });
+    </script>
+</body>
+</html>
